@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Eachtweet from "./eachtweet";
 import useStore from "../store";
+import.meta.env.VITE_val;
 // #1b2630
 
 type tweetsType = {
@@ -16,7 +17,9 @@ const Activity = () => {
   const tweets = useStore((state: any) => state.tweets);
   const setTweets = useStore((state: any) => state.setTweets);
   const getalltweets = async () => {
-    const resp = await fetch("http://localhost:5500/api/tweets");
+    const resp = await fetch(
+      "https://connectapi-production.up.railway.app/api/tweets"
+    );
     const data = await resp.json();
     if (data.length > 0) {
       setTweets(data);

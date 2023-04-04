@@ -5,8 +5,9 @@ export default function Profile() {
   const name = usestore((state: any) => state.name);
   const setName = usestore((state: any) => state.setName);
   return (
-    <div className="min-h-[40vh] w-[50vh] bg-[#1b2730] flex flex-col items-center justify-evenly">
-      <header className="max-w-full">Username : {name}</header>
+    <div className=" w-[50vh] bg-[#1b2730] flex flex-col h-fit p-10 mb-10 rounded-lg">
+      <span className="text-ellipsis font-bold text-2xl ">Username:</span>
+      <header className="text-center text-xl text-blue-600">{name}</header>
       <div className="w-full flex justify-center">
         <form
           className="flex flex-col justify-center"
@@ -15,7 +16,7 @@ export default function Profile() {
           <input
             type="text"
             value={name}
-            className="bg-[#05141c] h-10 w-[95%] mt-10 outline-none"
+            className="bg-[#05141c] py-2  mt-10 outline-none"
             placeholder="enter your username"
             onChange={(e) => {
               setName(e.target.value);

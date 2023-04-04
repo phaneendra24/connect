@@ -18,9 +18,12 @@ function Eachtweet(item: tweetType) {
   const data = { item };
 
   const deleteTweet = async () => {
-    const resp = await fetch(`http://localhost:5500/api/tweets/${item._id}`, {
-      method: "DELETE",
-    });
+    const resp = await fetch(
+      `https://connectapi-production.up.railway.app/api/tweets/${item._id}`,
+      {
+        method: "DELETE",
+      }
+    );
     const data = await resp.json();
     setTweets(data);
   };

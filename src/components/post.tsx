@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import usestore from "../store";
+import io from "socket.io-client";
+
+const socket = io("http://localhost:5500/");
 
 function Post() {
   const [post, setPost] = useState("");
@@ -8,25 +11,32 @@ function Post() {
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    try {
-      const resp = await fetch("http://localhost:5500/api/tweets", {
-        method: "POST",
-        headers: {
-          Accept: "application.json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: name,
-          tweet: post,
-          likes: 0,
-          dislikes: 0,
-        }),
-      });
-      const data = await resp.json();
-      setTweets(data);
-      setPost("");
-    } catch (e) {
-      alert("failed to post, try again!");
+    if (name == "") {
+      alert("enter the name first");
+    } else {
+      try {
+        const resp = await fetch(
+          "https://connectapi-production.up.railway.app/api/tweets/",
+          {
+            method: "POST",
+            headers: {
+              Accept: "application.json",
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              name: name,
+              tweet: post,
+              likes: 0,
+              dislikes: 0,
+            }),
+          }
+        );
+        const data = await resp.json();
+        setTweets(data);
+        setPost("");
+      } catch (e) {
+        alert("failed to post, try again!");
+      }
     }
   };
 

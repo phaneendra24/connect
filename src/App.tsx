@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App bg-[#05141c] min-h-screen w-full text-white">
       <Navbar />
-      <div className="mx-10 mt-10  gap-5 flex">
+      <div className="mx-10 mt-10  gap-5 sm:flex">
         <Profile />
         <div className="w-full flex flex-col">
           <Post />
