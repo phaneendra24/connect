@@ -47,6 +47,9 @@ function Eachtweet(item: tweetType) {
           </svg>
 
           <h1>{data.item.name}</h1>
+          <div className="border-2 w-fit h-fit px-1 ml-2 rounded-md hover:text-blue-600">
+            follow
+          </div>
         </div>
         <button
           id="trash"

@@ -50,10 +50,10 @@ function Post() {
           type="text"
           value={post}
           onChange={(e) => setPost(e.target.value)}
-          className="w-[80%]  outline-none bg-[#28353e] rounded-sm p-2"
-          placeholder="search"
+          className="w-[70%] sm:w-[80%]  outline-none bg-[#28353e] rounded-sm p-2"
+          placeholder="make a tweet"
         />
-        <button className="absolute bottom-2 right-6">POST</button>
+        <button className="absolute bottom-2 right-0 sm:right-6">POST</button>
       </form>
     </div>
   );

@@ -35,7 +35,7 @@ const Activity = () => {
       {tweets.map((item: tweetsType, index: number) => {
         return (
           <div
-            className="bg-[#1b2730] w-[80%] min-h-[30vh] px-5 py-3 mb-5 flex flex-col items-center justify-between"
+            className="bg-[#1b2730] w-[90%] sm:[80%] min-h-[30vh] px-5 py-3 mb-5 flex flex-col items-center justify-between rounded-lg"
             key={index}
           >
             <Eachtweet {...item} />

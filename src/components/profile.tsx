@@ -5,7 +5,7 @@ export default function Profile() {
   const name = usestore((state: any) => state.name);
   const setName = usestore((state: any) => state.setName);
   return (
-    <div className=" w-[50vh] bg-[#1b2730] flex flex-col h-fit p-10 mb-10 rounded-lg">
+    <div className="  bg-[#1b2730] flex flex-col h-fit p-10 mb-10 rounded-lg">
       <span className="text-ellipsis font-bold text-2xl ">Username:</span>
       <header className="text-center text-xl text-blue-600">{name}</header>
       <div className="w-full flex justify-center">
