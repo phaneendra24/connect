@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import usestore from "../store";
-import io from "socket.io-client";
-
-const socket = io("http://localhost:5500/");
+import { socket } from "../socket";
 
 function Post() {
   const [post, setPost] = useState("");
+  const tweets = usestore((state: any) => state.tweets);
+
   const setTweets = usestore((state: any) => state.setTweets);
   const name = usestore((state: any) => state.name);
 
@@ -15,8 +15,9 @@ function Post() {
       alert("enter the name first");
     } else {
       try {
+        import.meta.env.VITE_BACKEND;
         const resp = await fetch(
-          "https://connectapi-production.up.railway.app/api/tweets/",
+          `https://${import.meta.env.VITE_BACKEND}/api/tweets`,
           {
             method: "POST",
             headers: {
@@ -34,6 +35,7 @@ function Post() {
         const data = await resp.json();
         setTweets(data);
         setPost("");
+        socket.emit("tweets", data);
       } catch (e) {
         alert("failed to post, try again!");
       }

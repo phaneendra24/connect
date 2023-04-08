@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Eachtweet from "./eachtweet";
 import useStore from "../store";
-import.meta.env.VITE_val;
+import io from "socket.io-client";
 // #1b2630
+import { socket } from "../socket";
 
 type tweetsType = {
   _id: string;
@@ -14,12 +15,19 @@ type tweetsType = {
 };
 
 const Activity = () => {
+  socket.on("disconnect", () => {
+    console.log("sockets connected");
+  });
+  useEffect(() => {
+    socket.on("tweets", (payload) => setTweets(payload));
+  });
+
   const tweets = useStore((state: any) => state.tweets);
   const setTweets = useStore((state: any) => state.setTweets);
   const getalltweets = async () => {
-    const resp = await fetch(
-      "https://connectapi-production.up.railway.app/api/tweets"
-    );
+    const resp = await fetch(`
+    https://${import.meta.env.VITE_BACKEND}/api/tweets
+    `);
     const data = await resp.json();
     if (data.length > 0) {
       setTweets(data);
@@ -29,6 +37,10 @@ const Activity = () => {
   useEffect(() => {
     getalltweets();
   }, []);
+  const getsocket = (e: React.FormEvent) => {
+    e.preventDefault();
+    socket.emit("foo", { user: "phaneedra", msg: "hello there!" });
+  };
 
   return (
     <div className=" w-full h-full flex flex-col items-center gap-5 mt-10">

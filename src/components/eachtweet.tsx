@@ -19,7 +19,7 @@ function Eachtweet(item: tweetType) {
 
   const deleteTweet = async () => {
     const resp = await fetch(
-      `https://connectapi-production.up.railway.app/api/tweets/${item._id}`,
+      `https://${import.meta.env.VITE_BACKEND}/api/tweets/${item._id}`,
       {
         method: "DELETE",
       }
