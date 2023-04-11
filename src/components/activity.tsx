@@ -26,7 +26,7 @@ const Activity = () => {
   const setTweets = useStore((state: any) => state.setTweets);
   const getalltweets = async () => {
     const resp = await fetch(`
-    https://${import.meta.env.VITE_BACKEND}/api/tweets
+    http://${import.meta.env.VITE_LOCAL}/api/tweets
     `);
     const data = await resp.json();
     if (data.length > 0) {
@@ -47,7 +47,7 @@ const Activity = () => {
       {tweets.map((item: tweetsType, index: number) => {
         return (
           <div
-            className="bg-[#1b2730] w-[90%] sm:[80%] min-h-[30vh] px-5 py-3 mb-5 flex flex-col items-center justify-between rounded-lg"
+            className="App w-[90%] sm:[80%] min-h-[30vh] px-5 py-3 mb-5 flex flex-col items-center justify-between rounded-lg text-black"
             key={index}
           >
             <Eachtweet {...item} />

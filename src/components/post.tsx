@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import usestore from "../store";
 import { socket } from "../socket";
 
@@ -17,7 +17,7 @@ function Post() {
       try {
         import.meta.env.VITE_BACKEND;
         const resp = await fetch(
-          `https://${import.meta.env.VITE_BACKEND}/api/tweets`,
+          `http://${import.meta.env.VITE_LOCAL}/api/tweets`,
           {
             method: "POST",
             headers: {
@@ -41,22 +41,36 @@ function Post() {
       }
     }
   };
-
+  function handleKeyDown(event: any) {
+    if (event.ctrlKey && event.keyCode === 13) {
+      submit(event);
+    }
+  }
   return (
-    <div className="w-full rounded-md bg-[#1b2730] ">
-      <form
-        className="w-full h-full relative flex flex-col items-center justify-center"
-        onSubmit={(e) => submit(e)}
-      >
-        <input
-          type="text"
-          value={post}
-          onChange={(e) => setPost(e.target.value)}
-          className="w-[70%] sm:w-[80%]  outline-none bg-[#28353e] rounded-sm p-2"
-          placeholder="make a tweet"
-        />
-        <button className="absolute bottom-2 right-0 sm:right-6">POST</button>
-      </form>
+    <div className="relative h-40  flex flex-col  w-[90%] ">
+      <textarea
+        value={post}
+        onChange={(e) => setPost(e.target.value)}
+        onKeyDown={handleKeyDown}
+        className="h-24 resize-none  w-full placeholder:text-lg text-black  outline-none bg-[#f5f6f9] rounded-2xl p-2"
+        placeholder="Make a tweet"
+      />
+      <button className="mt-2 absolute bottom-0 right-5  text-black bg-[#e8daff] p-2 rounded-full">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth="1.5"
+          stroke="currentColor"
+          className="w-10 h-10 "
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5"
+          />
+        </svg>
+      </button>
     </div>
   );
 }

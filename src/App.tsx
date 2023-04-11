@@ -5,11 +5,10 @@ import Post from "./components/post";
 
 function App() {
   return (
-    <div className="App bg-[#05141c] min-h-screen w-full text-white">
+    <div className="  min-h-screen w-full text-white flex flex-col items-center">
       <Navbar />
-      <div className="mx-10 mt-10  gap-5 sm:flex">
-        <Profile />
-        <div className="w-full flex flex-col">
+      <div className="mx-10 gap-5 w-full mt-20">
+        <div className="w-full flex flex-col justify-center items-center">
           <Post />
           <Activity />
         </div>
