@@ -2,15 +2,19 @@ import Activity from "./components/activity";
 import Navbar from "./components/navbar";
 import Profile from "./components/profile";
 import Post from "./components/post";
+import Shortcuts from "./components/shortcuts";
 
 function App() {
   return (
-    <div className="  min-h-screen w-full text-white flex flex-col items-center">
+    <div className="min-h-screen w-full text-white flex flex-col items-center">
       <Navbar />
-      <div className="mx-10 gap-5 w-full mt-20">
-        <div className="w-full flex flex-col justify-center items-center">
+      <div className="w-full mt-10">
+        <div className="flex flex-col justify-center items-center mx-3 ">
           <Post />
-          <Activity />
+          <div className="w-full h-4 flex ">
+            <Activity />
+            <Shortcuts />
+          </div>
         </div>
       </div>
     </div>

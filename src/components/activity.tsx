@@ -43,7 +43,7 @@ const Activity = () => {
   };
 
   return (
-    <div className=" w-full h-full flex flex-col items-center gap-5 mt-10">
+    <div className="w-[60%] sm:full h-full flex flex-col items-center gap-5 mt-4">
       {tweets.map((item: tweetsType, index: number) => {
         return (
           <div

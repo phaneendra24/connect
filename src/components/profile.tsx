@@ -7,7 +7,7 @@ export default function Profile() {
   const inputRef: any = useRef();
 
   return (
-    <div className="flex justify-center items-center">
+    <div className="yflex justify-center items-center right-0">
       <span className="mr-2 font-semibold">Username:</span>
       <form
         className="flex justify-center items-center"
@@ -17,7 +17,7 @@ export default function Profile() {
           <input
             type="text"
             value={name}
-            className="bg-[#f5f6f9] outline-none pr-7 py-2 rounded-xl p-1"
+            className="bg-[#f5f6f9] outline-none pr-7 py-2 rounded-xl p-1 focus:underline focus:underline-offset-4 decoration-[#b695eb] "
             placeholder="enter your username"
             onChange={(e) => {
               setName(e.target.value);
