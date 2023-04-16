@@ -27,7 +27,7 @@ const Activity = () => {
   const getalltweets = async () => {
     //speak-api-ii4d.onrender.com
     const resp = await fetch(`
-      ${import.meta.env.VITE_BACKEND}/api/tweets
+      ${import.meta.env.VITE_BACKEND}api/tweets
       `);
     console.log("resp" + resp);
 

@@ -4,7 +4,7 @@ import { io } from "socket.io-client";
 
 const URL: any =
   process.env.NODE_ENV === "production"
-    ? `https://${import.meta.env.VITE_BACKEND}/`
+    ? `${import.meta.env.VITE_BACKEND}`
     : "http://localhost:5500/";
 
 export const socket = io(URL);
