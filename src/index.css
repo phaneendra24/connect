@@ -46,3 +46,17 @@
     transition: all ease-in 3s;
   }
 }
+
+.send_action {
+  animation: slider 1s ease forwards;
+}
+
+@keyframes slider {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(100%);
+    transition: 1s ease;
+  }
+}

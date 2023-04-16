@@ -4,6 +4,7 @@ import { socket } from "../socket";
 
 function Post() {
   const [post, setPost] = useState("");
+  const [click, setclick] = useState(false);
   const tweets = usestore((state: any) => state.tweets);
 
   const setTweets = usestore((state: any) => state.setTweets);
@@ -16,22 +17,19 @@ function Post() {
     } else {
       try {
         import.meta.env.VITE_BACKEND;
-        const resp = await fetch(
-          `http://${import.meta.env.VITE_LOCAL}/api/tweets`,
-          {
-            method: "POST",
-            headers: {
-              Accept: "application.json",
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              name: name,
-              tweet: post,
-              likes: 0,
-              dislikes: 0,
-            }),
-          }
-        );
+        const resp = await fetch(`${import.meta.env.VITE_BACKEND}/api/tweets`, {
+          method: "POST",
+          headers: {
+            Accept: "application.json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: name,
+            tweet: post,
+            likes: 0,
+            dislikes: 0,
+          }),
+        });
         const data = await resp.json();
         setTweets(data);
         setPost("");
@@ -46,6 +44,7 @@ function Post() {
       submit(event);
     }
   }
+
   return (
     <div className="relative h-40  flex flex-col  w-[90%] ">
       <textarea
@@ -55,14 +54,24 @@ function Post() {
         className="h-24 resize-none  w-full placeholder:text-lg text-black  outline-none bg-[#f5f6f9] rounded-2xl p-2"
         placeholder="Make a tweet"
       />
-      <button className="mt-2 absolute bottom-0 right-5  text-black bg-[#e8daff] p-2 rounded-full">
+      <button
+        className={`${
+          click ? "send_action" : ""
+        } mt-2 absolute bottom-0 right-5  text-black bg-[#e8daff] p-2 rounded-full`}
+        onClick={() => {
+          setclick(true);
+          setTimeout(() => {
+            setclick(false);
+          }, 1000);
+        }}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
           strokeWidth="1.5"
           stroke="currentColor"
-          className="w-10 h-10 "
+          className={` w-10 h-10`}
         >
           <path
             strokeLinecap="round"
