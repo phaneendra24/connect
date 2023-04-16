@@ -25,9 +25,8 @@ const Activity = () => {
   const tweets = useStore((state: any) => state.tweets);
   const setTweets = useStore((state: any) => state.setTweets);
   const getalltweets = async () => {
-    //speak-api-ii4d.onrender.com
     const resp = await fetch(`
-      ${import.meta.env.VITE_BACKEND}/api/tweets
+      ${import.meta.env.VITE_BACKEND}api/tweets
       `);
     console.log("resp" + resp);
 

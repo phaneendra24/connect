@@ -17,7 +17,7 @@ function Post() {
     } else {
       try {
         import.meta.env.VITE_BACKEND;
-        const resp = await fetch(`${import.meta.env.VITE_BACKEND}/api/tweets`, {
+        const resp = await fetch(`${import.meta.env.VITE_BACKEND}api/tweets`, {
           method: "POST",
           headers: {
             Accept: "application.json",
