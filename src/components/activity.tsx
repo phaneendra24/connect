@@ -25,7 +25,7 @@ const Activity = () => {
   const setTweets = useStore((state: any) => state.setTweets);
   const getalltweets = async () => {
     const resp = await fetch(`
-      ${import.meta.env.VITE_BACKEND}/api/tweets
+      ${import.meta.env.VITE_BACKEND}api/tweets
       `);
 
     const data = await resp.json();
