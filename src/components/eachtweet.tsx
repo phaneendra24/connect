@@ -21,7 +21,7 @@ function Eachtweet(item: tweetType) {
 
   const deleteTweet = async () => {
     const resp = await fetch(
-      `${import.meta.env.VITE_BACKEND}/api/tweets/${item._id}`,
+      `${import.meta.env.VITE_BACKEND}api/tweets/${item._id}`,
       {
         method: "DELETE",
       }
