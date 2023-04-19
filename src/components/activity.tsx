@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Eachtweet from "./eachtweet";
 import useStore from "../store";
 import io from "socket.io-client";
-// #1b2630
 import { socket } from "../socket";
 
 type tweetsType = {
@@ -26,7 +25,7 @@ const Activity = () => {
   const setTweets = useStore((state: any) => state.setTweets);
   const getalltweets = async () => {
     const resp = await fetch(`
-      ${import.meta.env.VITE_BACKEND}api/tweets
+      ${import.meta.env.VITE_BACKEND}/api/tweets
       `);
     console.log("resp" + resp);
 
@@ -35,21 +34,21 @@ const Activity = () => {
       setTweets(data);
     }
   };
+  useEffect(() => {
+    socket.on("tweets", (payload) => setTweets(payload));
+  });
 
   useEffect(() => {
     getalltweets();
   }, []);
-  const getsocket = (e: React.FormEvent) => {
-    e.preventDefault();
-    socket.emit("foo", { user: "phaneedra", msg: "hello there!" });
-  };
+  console.log(tweets);
 
   return (
-    <div className="w-[60%] sm:full h-full flex flex-col items-center gap-5 mt-4">
+    <div className="w-full sm:w-[60%] sm:full h-full flex flex-col items-center gap-5 mt-4 p-2">
       {tweets.map((item: tweetsType, index: number) => {
         return (
           <div
-            className="App w-[90%] sm:[80%] min-h-[30vh] px-5 py-3 mb-5 flex flex-col items-center justify-between rounded-lg text-black"
+            className="border-[2px] shadow-sm p-2 bg-[#f5f6f9] w-full  min-h-[30vh] mb-5 flex flex-col items-center justify-between rounded-lg text-black"
             key={index}
           >
             <Eachtweet {...item} />

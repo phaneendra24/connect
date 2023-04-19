@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import usestore from "../store";
+import { socket } from "../socket";
 
 type tweetType = {
   _id: string;
@@ -14,21 +15,23 @@ function Eachtweet(item: tweetType) {
   const [like, setLike] = useState(false);
   const [dislike, setdisLike] = useState(false);
   const setTweets = usestore((state: any) => state.setTweets);
+  // const tweets = usestore((state: any) => state.tweets);
 
   const data = { item };
 
   const deleteTweet = async () => {
     const resp = await fetch(
-      `${import.meta.env.VITE_BACKEND}api/tweets/${item._id}`,
+      `${import.meta.env.VITE_BACKEND}/api/tweets/${item._id}`,
       {
         method: "DELETE",
       }
     );
     const data = await resp.json();
     setTweets(data);
+    socket.emit("tweets", data);
   };
   return (
-    <>
+    <div className="w-full h-full flex flex-col justify-between">
       <header className="flex justify-between w-full text-center">
         <div className="flex justify-center items-center">
           <svg
@@ -46,7 +49,7 @@ function Eachtweet(item: tweetType) {
             />
           </svg>
           <h1 className="font-medium ml-2">{data.item.name}</h1>
-          <div className="border-[0.8px] w-fit h-fit px-1 ml-2 rounded-md hover:bg-blue-200 border-black cursor-pointer">
+          <div className="border-[0.8px] w-full h-fit px-1 ml-2 rounded-md hover:bg-blue-200 border-black cursor-pointer">
             follow
           </div>
         </div>
@@ -117,9 +120,9 @@ function Eachtweet(item: tweetType) {
           </svg>
         </button>
 
-        <div>{data.item.createdAt}</div>
+        <div>data</div>
       </div>
-    </>
+    </div>
   );
 }
 

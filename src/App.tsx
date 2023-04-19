@@ -11,9 +11,8 @@ function App() {
       <div className="w-full mt-10">
         <div className="flex flex-col justify-center items-center mx-3 ">
           <Post />
-          <div className="w-full h-4 flex ">
+          <div className="w-full flex">
             <Activity />
-            <Shortcuts />
           </div>
         </div>
       </div>
