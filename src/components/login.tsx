@@ -1,16 +1,17 @@
 import React from "react";
 import usestore from "../store";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const name = usestore((state: any) => state.name);
   const setName = usestore((state: any) => state.setName);
-  console.log(name);
+  const navigate = useNavigate();
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (name != "") {
+    if (name !== null && name !== "") {
       localStorage.setItem("user", name);
-      window.location.href = "/";
+      navigate("/");
     }
   };
 
