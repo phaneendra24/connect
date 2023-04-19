@@ -1,10 +1,15 @@
+import { useEffect } from "react";
 import Activity from "./components/activity";
 import Navbar from "./components/navbar";
-import Profile from "./components/profile";
 import Post from "./components/post";
-import Shortcuts from "./components/shortcuts";
 
 function App() {
+  const user: any = localStorage.getItem("user");
+  console.log(user);
+
+  if (user === null) {
+    window.location.href = "/login";
+  }
   return (
     <div className="min-h-screen w-full text-white flex flex-col items-center">
       <Navbar />

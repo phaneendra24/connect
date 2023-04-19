@@ -15,13 +15,12 @@ function Eachtweet(item: tweetType) {
   const [like, setLike] = useState(false);
   const [dislike, setdisLike] = useState(false);
   const setTweets = usestore((state: any) => state.setTweets);
-  // const tweets = usestore((state: any) => state.tweets);
 
   const data = { item };
 
   const deleteTweet = async () => {
     const resp = await fetch(
-      `${import.meta.env.VITE_BACKEND}api/tweets/${item._id}`,
+      `${import.meta.env.VITE_BACKEND}/api/tweets/${item._id}`,
       {
         method: "DELETE",
       }

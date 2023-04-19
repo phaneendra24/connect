@@ -25,9 +25,8 @@ const Activity = () => {
   const setTweets = useStore((state: any) => state.setTweets);
   const getalltweets = async () => {
     const resp = await fetch(`
-      ${import.meta.env.VITE_BACKEND}api/tweets
+      ${import.meta.env.VITE_BACKEND}/api/tweets
       `);
-    console.log("resp" + resp);
 
     const data = await resp.json();
     if (data.length > 0) {
@@ -41,7 +40,6 @@ const Activity = () => {
   useEffect(() => {
     getalltweets();
   }, []);
-  console.log(tweets);
 
   return (
     <div className="w-full sm:w-[60%] sm:full h-full flex flex-col items-center gap-5 mt-4 p-2">

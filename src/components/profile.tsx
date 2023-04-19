@@ -1,11 +1,15 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import usestore from "../store";
 
 export default function Profile() {
   const name = usestore((state: any) => state.name);
   const setName = usestore((state: any) => state.setName);
   const inputRef: any = useRef();
-
+  if (name != "" && localStorage.getItem("user") != null) {
+    localStorage.setItem("user", name);
+  } else {
+    setName(localStorage.getItem("user"));
+  }
   return (
     <div className="w-[70%] sm:w-full sm:flex sm:justify-end sm:items-center sm:right-0 ">
       <span className="mr-2 font-semibold">Username:</span>
@@ -56,7 +60,7 @@ export default function Profile() {
           stroke="currentColor"
           className="w-6 h-6 cursor-pointer"
           onClick={() => {
-            inputRef.current.focus();
+            window.location.href = "/login";
           }}
         >
           <path
