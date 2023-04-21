@@ -5,7 +5,7 @@ module.exports = {
     extend: {
       backgroundImage: {
         "footer-texture": "url('/img/footer-texture.png')",
-        lockbg: "url('./Lsbg.jpg')",
+        lockbg: "url('/Lsbg.jpg')",
       },
     },
   },
