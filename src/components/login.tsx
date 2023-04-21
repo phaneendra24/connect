@@ -16,10 +16,12 @@ function Login() {
   };
 
   return (
-    <div className="loginBg  w-full backdrop:blur-sm h-screen bg-lockbg bg-no-repeat flex justify-center items-center overflow-hidden">
-      <div className="w-[70%] rounded-xl sm:w-[60%] md:w-[40%] flex flex-col justify-center items-center">
-        <div className=" relative blur-sm w-full h-[30vh] bg-lockbg text-white text-3xl ">
-          <span className="absolute">Welcome</span>
+    <div className="loginBg  w-full  h-screen bg-lockbg bg-no-repeat flex justify-center items-center overflow-hidden">
+      <div className=" w-[80%] rounded-xl sm:w-[60%] md:w-[40%] flex flex-col justify-center items-center">
+        <div className=" relative w-full h-[30vh] bg-lockbg text-white text-3xl sm:text-5xl ">
+          <span className="absolute left-[30%] top-[50%] font-semibold ">
+            Welcome
+          </span>
         </div>
         <div className="bg-white h-[30vh] w-full ">
           <form
@@ -27,11 +29,12 @@ function Login() {
             onSubmit={(e) => submit(e)}
             className="h-full flex flex-col justify-evenly items-center"
           >
-            <div className="relative w-[80%] flex justify-center">
+            <div className="relative w-[80%] flex flex-col justify-evenly items-start ">
+              <span className="my-2 text-sm">username</span>
               <input
                 type="text"
                 required
-                className="border-[2px] outline-none py-2 px-2 pr-6 rounded-lg w-full"
+                className="lg-input  outline-none py-2 pl-3 pr-8  w-full focus:border-[2px] focus:border-purple-500"
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Enter name"
               />
@@ -40,11 +43,12 @@ function Login() {
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke-width="1.5"
-                stroke="currentColor"
-                className="w-6 h-6 absolute right-0 top-[30%]"
+                stroke="black"
+                className="w-6 h-6 absolute right-2 top-[53%]"
               >
                 <path
                   stroke-linecap="round"
+                  fill="#d89aff"
                   stroke-linejoin="round"
                   d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
                 />

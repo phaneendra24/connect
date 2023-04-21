@@ -50,3 +50,7 @@
 .loginBg {
   background-size: 100% 100%;
 }
+
+.lg-input {
+  border-bottom: 2px solid #d89aff;
+}
