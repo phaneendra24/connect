@@ -18,7 +18,7 @@ function App() {
     <div className="min-h-screen w-full text-white flex flex-col items-center">
       <Navbar />
       <div className="w-full mt-10">
-        <div className="flex flex-col justify-center items-center mx-3 ">
+        <div className="flex  flex-col justify-center items-center mx-3 ">
           <Post />
           <div className="w-full flex">
             <Activity />

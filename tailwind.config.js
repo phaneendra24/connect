@@ -2,7 +2,12 @@
 module.exports = {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        "footer-texture": "url('/img/footer-texture.png')",
+        lockbg: "url('Lsbg.jpg')",
+      },
+    },
   },
   plugins: [],
 };

@@ -51,7 +51,7 @@ export default function Post() {
   }
 
   return (
-    <div className="h-40  flex justify-between  w-full gap-3 my-4">
+    <div className="h-40  flex justify-between  w-full gap-3 my-4 ">
       <div className="relative h-40 w-full sm:w-[88%] flex flex-col">
         <textarea
           value={post}

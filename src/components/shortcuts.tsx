@@ -8,7 +8,7 @@ function Shortcuts({ setpost }: any) {
   const Tweets = usestore((state: any) => state.tweets);
 
   return (
-    <div className="text-sm h-full w-full rounded-md border-[1px] bg-[#f5f6f9]  mt-4 text-black  ">
+    <div className="text-sm h-full w-full rounded-md border-[1px] bg-[#f5f6f9]  mt-4 text-black overflow-hidden ">
       <ul
         className="grid grid-cols-2 sm:grid-cols-3 my-2 mx-1 gap-2"
         onClick={async (e: any) => {
