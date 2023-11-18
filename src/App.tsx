@@ -15,15 +15,11 @@ function App() {
     navigate("/login");
   }
   return (
-    <div className="min-h-screen w-full text-white flex flex-col items-center">
+    <div className="relative min-h-screen w-full text-white flex flex-col items-center bg-[#1b202d] px-5 sm:px-20">
       <Navbar />
-      <div className="w-full mt-10">
-        <div className="flex  flex-col justify-center items-center mx-3 ">
-          <Post />
-          <div className="w-full flex">
-            <Activity />
-          </div>
-        </div>
+      <div className="flex mt-20  flex-col justify-center items-center  w-full">
+        <Post />
+        <Activity />
       </div>
     </div>
   );

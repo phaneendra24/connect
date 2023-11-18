@@ -11,6 +11,7 @@ type tweetsType = {
   dislikes: number;
   tweet: string;
   createdAt: string;
+  time: string;
 };
 
 const Activity = () => {
@@ -29,6 +30,8 @@ const Activity = () => {
       `);
 
     const data = await resp.json();
+    console.log(data);
+
     if (data.length > 0) {
       setTweets(data);
     }
@@ -42,16 +45,9 @@ const Activity = () => {
   }, []);
 
   return (
-    <div className="w-full sm:w-[60%] sm:full h-full flex flex-col items-center gap-5 mt-4 p-2">
+    <div className="w-full flex flex-col gap-5 items-center justify-center">
       {tweets.map((item: tweetsType, index: number) => {
-        return (
-          <div
-            className="border-[2px] shadow-sm p-2 bg-[#f5f6f9] w-full  min-h-[30vh] mb-5 flex flex-col items-center justify-between rounded-lg text-black"
-            key={index}
-          >
-            <Eachtweet {...item} />
-          </div>
-        );
+        return <Eachtweet {...item} key={index} />;
       })}
     </div>
   );
